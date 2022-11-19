@@ -13,6 +13,10 @@
 		9A33DFE52911940C003DEC0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A33DFE32911940C003DEC0B /* Main.storyboard */; };
 		9A33DFE72911940E003DEC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A33DFE62911940E003DEC0B /* Assets.xcassets */; };
 		9A33DFEA2911940E003DEC0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A33DFE82911940E003DEC0B /* LaunchScreen.storyboard */; };
+		9A4A6F8B2919640A004264B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A6F8A2919640A004264B1 /* DetailViewController.swift */; };
+		9ACB16EF29140196002CBA6A /* WisataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB16EE29140196002CBA6A /* WisataModel.swift */; };
+		9ACB16F329143488002CBA6A /* WisataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB16F129143488002CBA6A /* WisataTableViewCell.swift */; };
+		9ACB16F429143488002CBA6A /* WisataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ACB16F229143488002CBA6A /* WisataTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		9A33DFE62911940E003DEC0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A33DFE92911940E003DEC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A33DFEB2911940E003DEC0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A4A6F8A2919640A004264B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9ACB16EE29140196002CBA6A /* WisataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisataModel.swift; sourceTree = "<group>"; };
+		9ACB16F129143488002CBA6A /* WisataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisataTableViewCell.swift; sourceTree = "<group>"; };
+		9ACB16F229143488002CBA6A /* WisataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WisataTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		9A33DFDC2911940C003DEC0B /* MyWisata */ = {
 			isa = PBXGroup;
 			children = (
+				9ACB16F029143458002CBA6A /* components */,
 				9A33DFDD2911940C003DEC0B /* AppDelegate.swift */,
 				9A33DFDF2911940C003DEC0B /* SceneDelegate.swift */,
 				9A33DFE12911940C003DEC0B /* ViewController.swift */,
@@ -63,8 +72,19 @@
 				9A33DFE62911940E003DEC0B /* Assets.xcassets */,
 				9A33DFE82911940E003DEC0B /* LaunchScreen.storyboard */,
 				9A33DFEB2911940E003DEC0B /* Info.plist */,
+				9ACB16EE29140196002CBA6A /* WisataModel.swift */,
+				9A4A6F8A2919640A004264B1 /* DetailViewController.swift */,
 			);
 			path = MyWisata;
+			sourceTree = "<group>";
+		};
+		9ACB16F029143458002CBA6A /* components */ = {
+			isa = PBXGroup;
+			children = (
+				9ACB16F129143488002CBA6A /* WisataTableViewCell.swift */,
+				9ACB16F229143488002CBA6A /* WisataTableViewCell.xib */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ACB16F429143488002CBA6A /* WisataTableViewCell.xib in Resources */,
 				9A33DFEA2911940E003DEC0B /* LaunchScreen.storyboard in Resources */,
 				9A33DFE72911940E003DEC0B /* Assets.xcassets in Resources */,
 				9A33DFE52911940C003DEC0B /* Main.storyboard in Resources */,
@@ -138,8 +159,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ACB16F329143488002CBA6A /* WisataTableViewCell.swift in Sources */,
 				9A33DFE22911940C003DEC0B /* ViewController.swift in Sources */,
 				9A33DFDE2911940C003DEC0B /* AppDelegate.swift in Sources */,
+				9A4A6F8B2919640A004264B1 /* DetailViewController.swift in Sources */,
+				9ACB16EF29140196002CBA6A /* WisataModel.swift in Sources */,
 				9A33DFE02911940C003DEC0B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
