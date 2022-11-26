@@ -8,8 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let pendingOperations = PendingOperations()
+    
     @IBOutlet weak var wisataTableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wisataTableView.dataSource = self
@@ -29,6 +31,22 @@ class ViewController: UIViewController {
     }
 }
 
+
+// MARK: Handle ketika user sedang scroll maka download akan dihentikan sementara
+extension ViewController: UIScrollViewDelegate {
+    fileprivate func toggleSuspendOperations(isSuspended: Bool) {
+        pendingOperations.downloadQueue.isSuspended = isSuspended
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        toggleSuspendOperations(isSuspended: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        toggleSuspendOperations(isSuspended: false)
+    }
+}
+
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dummyWisataData.count
@@ -37,15 +55,51 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "WisataCell", for: indexPath) as? WisataTableViewCell {
             let wisata = dummyWisataData[indexPath.row]
-            cell.setData(data: WisataTableViewCellData(
+            
+            let data = WisataTableViewCellData(
                 name: wisata.name,
-                image: wisata.image,
-                description: wisata.description
-            ))
+                description: wisata.description,
+                image: wisata.imageView
+            )
+            
+            cell.setData(data: data)
+            
+            if wisata.state == .new {
+                cell.indicatorLoading.isHidden = false
+                cell.indicatorLoading.startAnimating()
+                startOperations(wisata: wisata, indexPath: indexPath)
+            } else {
+                cell.indicatorLoading.stopAnimating()
+                cell.indicatorLoading.isHidden = true
+            }
+        
             return cell
         } else {
             return UITableViewCell()
         }
+    }
+    
+    fileprivate func startOperations(wisata: WisataModel, indexPath: IndexPath) {
+        if wisata.state == .new {
+            startDownload(wisata: wisata, indexPath: indexPath)
+        }
+    }
+    
+    fileprivate func startDownload(wisata: WisataModel, indexPath: IndexPath) {
+        guard pendingOperations.downloadInProgress[indexPath] == nil else { return }
+        
+        let downloader = ImageDownloader(wisata: wisata)
+        
+        downloader.completionBlock = {
+            if downloader.isCancelled { return }
+            DispatchQueue.main.async {
+                self.pendingOperations.downloadInProgress.removeValue(forKey: indexPath)
+                self.wisataTableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
+        
+        pendingOperations.downloadInProgress[indexPath] = downloader
+        pendingOperations.downloadQueue.addOperation(downloader)
     }
 }
 

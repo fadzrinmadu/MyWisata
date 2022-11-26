@@ -17,6 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Tum-lW-wab">
+                        <rect key="frame" x="48" y="48" width="20" height="20"/>
+                    </activityIndicatorView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BUG-1o-1B1">
                         <rect key="frame" x="8" y="8" width="100" height="100"/>
                         <constraints>
@@ -40,8 +43,10 @@
                     <constraint firstAttribute="bottom" secondItem="BUG-1o-1B1" secondAttribute="bottom" constant="8" id="0Sl-ar-sgT"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="t7C-dU-DD0" secondAttribute="trailing" constant="8" id="3Tm-eL-dbQ"/>
                     <constraint firstItem="t7C-dU-DD0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="4b0-v1-i3P"/>
+                    <constraint firstItem="Tum-lW-wab" firstAttribute="centerY" secondItem="BUG-1o-1B1" secondAttribute="centerY" id="Cis-22-IeF"/>
                     <constraint firstItem="BUG-1o-1B1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="HiG-fe-61g"/>
                     <constraint firstItem="7g1-n6-aTf" firstAttribute="top" secondItem="t7C-dU-DD0" secondAttribute="bottom" constant="4" id="Hjv-ir-3cQ"/>
+                    <constraint firstItem="Tum-lW-wab" firstAttribute="centerX" secondItem="BUG-1o-1B1" secondAttribute="centerX" id="Lzw-T9-Gnn"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7g1-n6-aTf" secondAttribute="trailing" constant="8" id="Rvs-F7-9r4"/>
                     <constraint firstItem="t7C-dU-DD0" firstAttribute="leading" secondItem="BUG-1o-1B1" secondAttribute="trailing" constant="8" id="Tv1-kF-8gp"/>
                     <constraint firstItem="BUG-1o-1B1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Vcb-bi-WJK"/>
@@ -50,6 +55,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="indicatorLoading" destination="Tum-lW-wab" id="bdh-7R-wMp"/>
                 <outlet property="wisataDescriptionLabel" destination="7g1-n6-aTf" id="isL-9T-3nl"/>
                 <outlet property="wisataImageView" destination="BUG-1o-1B1" id="790-Y9-0lL"/>
                 <outlet property="wisataTitleLabel" destination="t7C-dU-DD0" id="8t9-Ec-B0q"/>

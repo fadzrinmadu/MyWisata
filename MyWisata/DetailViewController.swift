@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let result = wisata {
-            wisataImage.downloaded(from: result.image)
+//            wisataImage.downloaded(from: result.image)
             wisataTitleLabel.text = result.name
             wisataDescriptionLabel.text = result.description
         }

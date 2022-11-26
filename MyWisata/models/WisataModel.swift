@@ -8,6 +8,10 @@
 import UIKit
 import Foundation
 
+enum DownloadState {
+    case new, downloaded, failed
+}
+
 struct WisataModel {
     let id: Int
     let name: String
@@ -16,7 +20,21 @@ struct WisataModel {
     let longitude: Double
     let latitude: Double
     let like: Int
-    let image: String
+    let image: URL
+    
+    var imageView: UIImage?
+    var state: DownloadState = .new
+    
+    init(id: Int, name: String, description: String, address: String, longitude: Double, latitude: Double, like: Int, image: URL) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.address = address
+        self.longitude = longitude
+        self.latitude = latitude
+        self.like = like
+        self.image = image
+    }
 }
 
 let dummyWisataData = [
@@ -28,7 +46,7 @@ let dummyWisataData = [
         longitude: 121.791432,
         latitude: -8.7415482,
         like: 57,
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Kelimutu_2008-08-08.jpg/800px-Kelimutu_2008-08-08.jpg"
+        image: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Kelimutu_2008-08-08.jpg/800px-Kelimutu_2008-08-08.jpg")!
     ),
     WisataModel(
         id: 2,
@@ -38,7 +56,7 @@ let dummyWisataData = [
         longitude: 98.8932576,
         latitude: 2.6540427,
         like: 12,
-        image: "https://cdn.pixabay.com/photo/2016/12/09/11/51/lake-toba-1894746_960_720.jpg"
+        image: URL(string: "https://cdn.pixabay.com/photo/2016/12/09/11/51/lake-toba-1894746_960_720.jpg")!
     ),
     WisataModel(
         id: 3,
@@ -48,7 +66,7 @@ let dummyWisataData = [
         longitude: 112.9355026,
         latitude: -7.9424931,
         like: 88,
-        image: "https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1354&q=80"
+        image: URL(string: "https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1354&q=80")!
     ),
     WisataModel(
         id: 4,
@@ -58,7 +76,7 @@ let dummyWisataData = [
         longitude: 124.7601806,
         latitude: 1.6231908,
         like: 60,
-        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sunset_at_Bunaken_Island%2C_Sulawesi%2C_2016.jpg/800px-Sunset_at_Bunaken_Island%2C_Sulawesi%2C_2016.jpg"
+        image: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sunset_at_Bunaken_Island%2C_Sulawesi%2C_2016.jpg/800px-Sunset_at_Bunaken_Island%2C_Sulawesi%2C_2016.jpg")!
     ),
     WisataModel(
         id: 5,
@@ -68,7 +86,7 @@ let dummyWisataData = [
         longitude: 119.332549,
         latitude: -8.5892072,
         like: 56,
-        image: "https://cdn.pixabay.com/photo/2020/03/21/19/40/komodo-trekking-4955035_960_720.jpg"
+        image: URL(string: "https://cdn.pixabay.com/photo/2020/03/21/19/40/komodo-trekking-4955035_960_720.jpg")!
     ),
     WisataModel(
       id: 6,
@@ -78,7 +96,7 @@ let dummyWisataData = [
       longitude: 109.8994385,
       latitude: -7.2149012,
       like: 46,
-      image: "https://cdn.pixabay.com/photo/2018/12/03/14/01/mount-prau-3853489_960_720.jpg"
+      image: URL(string: "https://cdn.pixabay.com/photo/2018/12/03/14/01/mount-prau-3853489_960_720.jpg")!
     ),
     WisataModel(
       id: 7,
@@ -88,7 +106,7 @@ let dummyWisataData = [
       longitude: 130.5079122,
       latitude: -0.233333,
       like: 10,
-      image: "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+      image: URL(string: "https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")!
     ),
     WisataModel(
         id: 8,
@@ -98,7 +116,7 @@ let dummyWisataData = [
         longitude: 118.2414973,
         latitude: 2.2842912,
         like: 5,
-        image: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Derawan_Island_East_Kalimantan.jpg"
+        image: URL(string: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Derawan_Island_East_Kalimantan.jpg")!
     ),
     WisataModel(
       id: 9,
@@ -108,7 +126,7 @@ let dummyWisataData = [
       longitude: 107.399951,
       latitude: -7.166154,
       like: 94,
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Kawah_Putih_from_the_bottom%2C_Bandung_Regency%2C_2014-08-21.jpg/800px-Kawah_Putih_from_the_bottom%2C_Bandung_Regency%2C_2014-08-21.jpg"
+      image: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Kawah_Putih_from_the_bottom%2C_Bandung_Regency%2C_2014-08-21.jpg/800px-Kawah_Putih_from_the_bottom%2C_Bandung_Regency%2C_2014-08-21.jpg")!
     ),
     WisataModel(
       id: 10,
@@ -118,6 +136,6 @@ let dummyWisataData = [
       longitude: 107.7115838,
       latitude: -2.5517187,
       like: 78,
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Tanjung_Tinggi_Beach%2C_Bangka-Belitung_Province%2C_Indonesia.jpg/800px-Tanjung_Tinggi_Beach%2C_Bangka-Belitung_Province%2C_Indonesia.jpg"
+      image: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Tanjung_Tinggi_Beach%2C_Bangka-Belitung_Province%2C_Indonesia.jpg/800px-Tanjung_Tinggi_Beach%2C_Bangka-Belitung_Province%2C_Indonesia.jpg")!
     )
 ]

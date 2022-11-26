@@ -14,6 +14,7 @@
 		9A33DFE72911940E003DEC0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A33DFE62911940E003DEC0B /* Assets.xcassets */; };
 		9A33DFEA2911940E003DEC0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A33DFE82911940E003DEC0B /* LaunchScreen.storyboard */; };
 		9A4A6F8B2919640A004264B1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4A6F8A2919640A004264B1 /* DetailViewController.swift */; };
+		9AA8EAC7293226FE0057D8D4 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA8EAC6293226FE0057D8D4 /* ImageDownloader.swift */; };
 		9ACB16EF29140196002CBA6A /* WisataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB16EE29140196002CBA6A /* WisataModel.swift */; };
 		9ACB16F329143488002CBA6A /* WisataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACB16F129143488002CBA6A /* WisataTableViewCell.swift */; };
 		9ACB16F429143488002CBA6A /* WisataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ACB16F229143488002CBA6A /* WisataTableViewCell.xib */; };
@@ -29,6 +30,7 @@
 		9A33DFE92911940E003DEC0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A33DFEB2911940E003DEC0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A4A6F8A2919640A004264B1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9AA8EAC6293226FE0057D8D4 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		9ACB16EE29140196002CBA6A /* WisataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisataModel.swift; sourceTree = "<group>"; };
 		9ACB16F129143488002CBA6A /* WisataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisataTableViewCell.swift; sourceTree = "<group>"; };
 		9ACB16F229143488002CBA6A /* WisataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WisataTableViewCell.xib; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				9ACB16F029143458002CBA6A /* components */,
+				9AA8EAC5293226D90057D8D4 /* models */,
+				9AA8EAC4293226C50057D8D4 /* utils */,
 				9A33DFDD2911940C003DEC0B /* AppDelegate.swift */,
 				9A33DFDF2911940C003DEC0B /* SceneDelegate.swift */,
 				9A33DFE12911940C003DEC0B /* ViewController.swift */,
@@ -72,10 +76,25 @@
 				9A33DFE62911940E003DEC0B /* Assets.xcassets */,
 				9A33DFE82911940E003DEC0B /* LaunchScreen.storyboard */,
 				9A33DFEB2911940E003DEC0B /* Info.plist */,
-				9ACB16EE29140196002CBA6A /* WisataModel.swift */,
 				9A4A6F8A2919640A004264B1 /* DetailViewController.swift */,
 			);
 			path = MyWisata;
+			sourceTree = "<group>";
+		};
+		9AA8EAC4293226C50057D8D4 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9AA8EAC6293226FE0057D8D4 /* ImageDownloader.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		9AA8EAC5293226D90057D8D4 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				9ACB16EE29140196002CBA6A /* WisataModel.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		9ACB16F029143458002CBA6A /* components */ = {
@@ -161,6 +180,7 @@
 			files = (
 				9ACB16F329143488002CBA6A /* WisataTableViewCell.swift in Sources */,
 				9A33DFE22911940C003DEC0B /* ViewController.swift in Sources */,
+				9AA8EAC7293226FE0057D8D4 /* ImageDownloader.swift in Sources */,
 				9A33DFDE2911940C003DEC0B /* AppDelegate.swift in Sources */,
 				9A4A6F8B2919640A004264B1 /* DetailViewController.swift in Sources */,
 				9ACB16EF29140196002CBA6A /* WisataModel.swift in Sources */,
